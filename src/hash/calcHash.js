@@ -3,7 +3,7 @@ import { readFile, createReadStream } from "fs";
 
 const calculateHash = async () => {
   const readStream = createReadStream(
-    "./src/hash/files/fileToCalculateHashFor.txt"
+    "./src/hash/files/fileToCalculateHashFor.txt", { highWaterMark: 10 }
   );
 
   readStream.on("data", (chunk) => {

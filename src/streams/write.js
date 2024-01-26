@@ -1,5 +1,13 @@
+import { createWriteStream } from "fs";
+
 const write = async () => {
-    // Write your code here 
+  const writableStream = createWriteStream(
+    "./src/streams/files/fileToWrite.txt"
+  );
+
+  process.stdin.on("data", (data) => {
+    writableStream.write(data);
+  });
 };
 
 await write();
